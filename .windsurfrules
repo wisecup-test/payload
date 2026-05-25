@@ -1,0 +1,18 @@
+# actual-ai:adr-governance:start
+---
+description: Discover project ADRs in .actual/rules/
+globs: []
+alwaysApply: true
+---
+
+This project's conventions are encoded as ADRs under `.actual/rules/`, indexed by topic in `CLAUDE.md`. **The ADRs ARE the pattern.** Follow them verbatim instead of reading existing implementations to figure out how to do something.
+
+Discovery:
+
+1. Read `CLAUDE.md` for the topical index that maps file globs to rule topics, then follow the workflow it describes (it caps how many ADR files to read per task).
+2. Each ADR filename is `<topic>-<aspect-slug>-<hash>.md` — the aspect-slug (middle segment) is the ADR's specific concern. Read the rules whose aspect-slugs apply to your current task.
+3. Follow the ADRs' rule statements when writing or modifying code.
+4. After implementing, verify against the rules' `verify_commands` / `accept_criteria`.
+
+The ADRs are your source of truth for project conventions. If you find yourself reading existing implementations to figure out *how* to do something, you've skipped a step — the ADRs already encode that.
+# actual-ai:adr-governance:end
