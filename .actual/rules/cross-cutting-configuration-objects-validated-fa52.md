@@ -1,0 +1,29 @@
+# Adopt Configuration-Driven Data Access with Inline Processing Pattern: Configuration Objects Validated
+
+These rules are ALWAYS ACTIVE for all workflow and queue processing systems, field traversal and data transformation utilities, authentication strategy implementations, relationship and data access layer operations, and task execution engines with retry and backoff requirements.
+
+### Rules
+
+- **R-30-001** SHOULD: Configuration objects SHOULD be validated at initialization time to catch configuration errors before runtime execution.
+
+### Verify
+
+```bash
+# Verify configuration-driven retry mechanisms in workflow definitions
+grep -r "retries.*:" test/queues/workflows/ | grep -v "undefined" | wc -l
+
+# Verify configuration objects in field traversal utilities
+grep -r "config.*:.*{" packages/payload/src/utilities/ | wc -l
+
+# Verify traverseFields accepts configuration objects
+find . -name "*.ts" -exec grep -l "traverseFields.*config" {} \; | wc -l
+```
+
+**Accept when:**
+- Configuration-driven retry mechanisms are present in workflow definitions with explicit retry counts or backoff strategies
+- Field traversal utilities accept configuration objects as parameters rather than using hard-coded behavior
+- At least 15 files demonstrate the configuration-driven pattern across different subsystems (queues, auth, relationships, utilities)
+
+<enforcement>
+Claude Code MUST NOT skip or defer verification. Configuration validation at initialization time is mandatory for all in-scope data access components. Violations must be flagged during code review and CI pipeline validation.
+</enforcement>

@@ -1,4 +1,7 @@
-<!-- actual-ai:adr-governance:start -->
+---
+alwaysApply: true
+---
+
 # Project ADRs
 
 This project's conventions are encoded as ADRs under `.actual/rules/`. **The ADRs ARE the pattern.** Follow them verbatim instead of reading existing implementations to figure out how to do something.
@@ -49,6 +52,3 @@ Compliance is not optional. Do not skip verification, assume correctness, or def
 | You're editing | Topic prefix |
 |---|---|
 | `**/*` | `cross-cutting-` _(100 ADRs)_ |
-<!-- actual-ai:adr-governance:end -->
-
-Please read the /CLAUDE.md file for context.
